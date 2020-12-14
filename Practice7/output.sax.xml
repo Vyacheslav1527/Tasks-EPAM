@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Tariffs>
+<Tariff>
+<Name>Eco</Name>
+<Operator_name>Operator1</Operator_name>
+<Payroll currency="RUB" scale="month">100.0</Payroll>
+<Call_prices>
+<Price netBorder="inner" type="call">
+<payment currency="RUB" scale="minute">0.3</payment>
+</Price>
+<Price netBorder="outer" type="call">
+<payment currency="RUB" scale="minute">2.0</payment>
+</Price>
+<Price netBorder="landLine" type="call">
+<payment currency="RUB" scale="minute">5.0</payment>
+</Price>
+</Call_prices>
+<SMS_prices>
+<Price type="sms">
+<payment currency="RUB" scale="each">0.25</payment>
+</Price>
+</SMS_prices>
+<Parameters>
+<Parameter type="favouriteNum">true</Parameter>
+<Parameter type="tariffing" unit="minute">12</Parameter>
+<Parameter type="connectionPayment" unit="RUB">100</Parameter>
+</Parameters>
+</Tariff>
+<Tariff>
+<Name>Premium</Name>
+<Operator_name>Operator3</Operator_name>
+<Payroll currency="UAH" scale="month">200.0</Payroll>
+<Call_prices>
+<Price netBorder="inner" type="call">
+<payment currency="UAH" scale="minute">0.32</payment>
+</Price>
+<Price netBorder="outer" type="call">
+<payment currency="UAH" scale="minute">0.45</payment>
+</Price>
+<Price netBorder="landLine" type="call">
+<payment currency="UAH" scale="minute">0.86</payment>
+</Price>
+</Call_prices>
+<SMS_prices>
+<Price type="sms">
+<payment currency="UAH" scale="each">0.15</payment>
+</Price>
+</SMS_prices>
+<Parameters>
+<Parameter type="favouriteNum">true</Parameter>
+<Parameter type="tariffing" unit="minute">1</Parameter>
+<Parameter type="connectionPayment" unit="UAH">350</Parameter>
+</Parameters>
+</Tariff>
+<Tariff>
+<Name>Standard</Name>
+<Operator_name>Operator2</Operator_name>
+<Payroll currency="RUB" scale="week">45.0</Payroll>
+<Call_prices>
+<Price netBorder="inner" type="call">
+<payment currency="RUB" scale="minute">0.5</payment>
+</Price>
+<Price netBorder="outer" type="call">
+<payment currency="RUB" scale="minute">2.0</payment>
+</Price>
+<Price netBorder="landLine" type="call">
+<payment currency="RUB" scale="minute">10.0</payment>
+</Price>
+</Call_prices>
+<SMS_prices>
+<Price type="sms">
+<payment currency="RUB" scale="each">1.0</payment>
+</Price>
+</SMS_prices>
+<Parameters>
+<Parameter type="favouriteNum">false</Parameter>
+<Parameter type="tariffing" unit="second">12</Parameter>
+<Parameter type="connectionPayment" unit="RUB">89.9</Parameter>
+</Parameters>
+</Tariff>
+</Tariffs>

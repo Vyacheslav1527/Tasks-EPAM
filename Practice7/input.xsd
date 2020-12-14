@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  XML schema -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://nure.ua/veres/practice7"
+           xmlns:tns="http://nure.ua/veres/practice7">
+
+    <xs:element name="Tariffs">
+
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="Tariff">
+                    <xs:complexType>
+                        <xs:sequence>
+
+                            <xs:element name="Name">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="1"/>
+                                        <xs:pattern value=".*[^\s].*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="Operator_name">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="1"/>
+                                        <xs:pattern value=".*[^\s].*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="Payroll" type="tns:payroll" minOccurs="1" maxOccurs="unbounded"/>
+                            <xs:element name="Call_prices" type="tns:prices"/>
+                            <xs:element name="SMS_prices" type="tns:prices"/>
+                            <xs:element name="Parameters" type="tns:parameters"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+
+    <xs:simpleType name="payment_restriction">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="parameter_restriction">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:pattern value=".*[^\s].*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="payroll">
+        <xs:simpleContent>
+            <xs:extension base="tns:payment_restriction">
+                <xs:attributeGroup ref="tns:paymentAttributes"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="payment">
+            <xs:simpleContent>
+                <xs:extension base="tns:payment_restriction">
+                    <xs:attributeGroup ref="tns:paymentAttributes"/>
+                </xs:extension>
+            </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="prices">
+        <xs:sequence>
+            <xs:element name="Price" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="payment" type="tns:payment"/>
+                    </xs:sequence>
+                    <xs:attributeGroup ref="tns:priceAttributes"/>
+                </xs:complexType>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="parameters">
+        <xs:sequence>
+            <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="tns:parameter_restriction">
+                            <xs:attributeGroup ref="tns:parameterAttributes"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:attributeGroup name="paymentAttributes">
+        <xs:attribute name="scale" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="each"/>
+                    <xs:enumeration value="second"/>
+                    <xs:enumeration value="minute"/>
+                    <xs:enumeration value="day"/>
+                    <xs:enumeration value="week"/>
+                    <xs:enumeration value="month"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="currency" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                    <xs:pattern value=".*[^\s].*"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <xs:attributeGroup name="priceAttributes">
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="call"/>
+                    <xs:enumeration value="sms"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="netBorder">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="inner"/>
+                    <xs:enumeration value="outer"/>
+                    <xs:enumeration value="landLine"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <xs:attributeGroup name="parameterAttributes">
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="favouriteNum"/>
+                    <xs:enumeration value="tariffing"/>
+                    <xs:enumeration value="connectionPayment"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="unit">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                    <xs:pattern value=".*[^\s].*"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+</xs:schema>

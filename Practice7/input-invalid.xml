@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Input XML document. This XML is valid against Test.xsd XML schema-->
+
+<practice7:Tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:practice7="http://nure.ua/veres/practice7"
+                   xsi:schemaLocation="http://nure.ua/veres/practice7 input.xsd">
+
+
+    <Tariff>
+        <Name>Eco</Name>
+        <Operator_name>Operator1</Operator_name>
+        <Payroll scale="month" currency="RUB">100</Payroll>
+        <Call_prices>
+            <Price type="call" netBorder="inner">
+                <payment scale="minute" currency="RUB">0.3</payment>
+            </Price>
+            <Price type="call" netBorder="outer">
+                <payment scale="minute" currency="RUB">2</payment>
+            </Price>
+            <Price type="call" netBorder="landLine">
+                <payment scale="minute" currency="RUB">5</payment>
+            </Price>
+        </Call_prices>
+        <Parameters>
+            <Parameter type="favouriteNum">true</Parameter>
+            <Parameter type="tariffing" unit="minute">12</Parameter>
+            <Parameter type="connectionPayment" unit="RUB">100</Parameter>
+        </Parameters>
+    </Tariff>
+
+
+    <Tariff>
+        <Name>Standard</Name>
+        <Operator_name>Operator2</Operator_name>
+        <Payroll scale="week" currency="RUB">45</Payroll>
+        <Call_prices>
+            <Price type="call" netBorder="inner">
+                <payment scale="minute" currency="RUB">0.5</payment>
+            </Price>
+            <Price type="call" netBorder="outer">
+                <payment scale="minute" currency="RUB">2</payment>
+            </Price>
+            <Price type="call" netBorder="landLine">
+                <payment scale="minute" currency="RUB">10</payment>
+            </Price>
+        </Call_prices>
+        <SMS_prices>
+            <Price type="sms">
+                <payment scale="each" currency="RUB">1</payment>
+            </Price>
+        </SMS_prices>
+        <Parameters>
+            <Parameter type="favouriteNum">false</Parameter>
+            <Parameter type="tariffing" unit="second">12</Parameter>
+            <Parameter type="connectionPayment" unit="RUB">89.9</Parameter>
+        </Parameters>
+    </Tariff>
+
+    <Tariff>
+        <Name>Premium</Name>
+        <Operator_name>Operator3</Operator_name>
+        <Payroll scale="month" currency="UAH">200</Payroll>
+        <Call_prices>
+            <Price type="call" netBorder="inner">
+                <payment scale="minute" currency="UAH">0.32</payment>
+            </Price>
+            <Price type="call" netBorder="outer">
+                <payment scale="minute" currency="UAH">0.45</payment>
+            </Price>
+            <Price type="call" netBorder="landLine">
+                <payment scale="minute" currency="UAH">0.86</payment>
+            </Price>
+        </Call_prices>
+        <SMS_prices>
+            <Price type="sms">
+                <payment scale="each" currency="UAH">0.15</payment>
+            </Price>
+        </SMS_prices>
+        <Parameters>
+            <Parameter type="favouriteNum">true</Parameter>
+            <Parameter type="tariffing" unit="minute">1</Parameter>
+            <Parameter type="connectionPayment" unit="UAH">350</Parameter>
+        </Parameters>
+    </Tariff>
+
+</practice7:Tariffs>
